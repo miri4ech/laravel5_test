@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
+use App\Models\Admin;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -28,10 +28,10 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
-    protected $loginView = 'login'; //追加　login時のview指定
-    //protected $redirectPath = '/';
-    protected $guard = 'users';
+    protected $redirectTo = '/admin/home'; //追加
+    protected $loginView = 'admin.login'; //追加　login時のview指定
+    //protected $redirectPath = '/admin/';
+    protected $guard = 'admin';
 
     /**
      * Create a new authentication controller instance.
@@ -43,17 +43,6 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
-    //追加部分
-    public function showLoginForm(){
-        if(view()->exists('auth.authenticate')){
-            return view('auth.authenticate');
-        }
-        return view('auth.login');
-    }
-    
-    public function showRegistrationForm(){
-        return view('auth.register');
-    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -70,7 +59,6 @@ class AuthController extends Controller
         ]);
     }
 
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -79,7 +67,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Admin::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),

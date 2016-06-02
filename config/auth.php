@@ -16,6 +16,14 @@ return [
             'driver' => 'session',
             'provider' => 'admin',
         ],
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+        ],       
     ],
 
 
@@ -34,14 +42,14 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'email' => 'users.auth.emails.password',
-            'table' => 'multiauth_password_resets',
+            'email' => 'auth.emails.password',
+            'table' => 'password_resets',
             'expire' => 60,
         ],
         'admin' => [
             'provider' => 'admin',
-            'email' => 'users.auth.emails.password',
-            'table' => 'multiauth_password_resets',
+            'email' => 'admin.emails.password',
+            'table' => 'password_resets',
             'expire' => 60,
         ],
     ],

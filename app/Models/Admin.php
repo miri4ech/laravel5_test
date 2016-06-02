@@ -22,5 +22,4 @@ class Admin extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $gurd = "admins";
 }

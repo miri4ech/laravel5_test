@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 //モデルの宣言
-use App\Models\User;
+use App\Models\Admin;
 
 class UserController extends Controller
 {
