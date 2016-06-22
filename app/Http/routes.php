@@ -1,8 +1,8 @@
 <?php
 
-	Route::get('/', function () {
-		return view('welcome');
-	});
+	// Route::get('/', function () {
+	// 	return view('admin_gentelella.dashboard');
+	// });
 
 	//一覧表示・新規追加
 	// Route::resource('events', 'Admin\EventController');
@@ -42,4 +42,21 @@
 		});
 		Route::get('/logout','Auth\AuthController@logout');
 		
+	});
+
+	//サブドメインのドメイン切り替え
+	Route::group(['domain' => 'admin.homestead.app'], function()
+	{
+		Route::get('/', function () {
+			return view('admin_gentelella.dashboard');
+		});
+
+	});
+
+	Route::group(['domain' => 'homestead.app'], function()
+	{
+		Route::get('/', function () {
+			return view('students.login');
+		});
+
 	});
