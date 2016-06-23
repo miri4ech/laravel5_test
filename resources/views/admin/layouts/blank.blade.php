@@ -27,9 +27,9 @@
         <div class="container body">
             <div class="main_container">
 
-                @include('admin_gentelella/includes/sidebar')
+                @include('admin/includes/sidebar')
 
-                @include('admin_gentelella/includes/topbar')
+                @include('admin/includes/topbar')
 
                 @yield('main_container')
 

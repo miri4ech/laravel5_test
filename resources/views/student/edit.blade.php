@@ -1,4 +1,4 @@
-@extends('students.layout.app')
+@extends('student.layout.app')
 
 @section('title', 'editページだよ')
 

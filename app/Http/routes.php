@@ -47,12 +47,12 @@
 	/*--------------サブドメインのドメイン切り替え--------------*/
 	Route::group(['domain' => 'admin.homestead.app'], function(){
 		Route::get('/', function () {
-			return view('admin_gentelella.dashboard');
+			return view('admin.dashboard');
 		});
 	});
 
 	Route::group(['domain' => 'homestead.app'], function(){
 		Route::get('/', function () {
-			return view('students.login');
+			return view('student.login');
 		});
 	});

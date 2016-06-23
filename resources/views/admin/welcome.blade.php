@@ -1,4 +1,4 @@
-@extends('admin_gentelella.layouts.blank')
+@extends('admin.layouts.blank')
 
 @push('stylesheets')
     <!-- iCheck -->
