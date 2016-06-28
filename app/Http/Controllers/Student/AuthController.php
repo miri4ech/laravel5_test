@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Student;
 
 use App\Models\User;
 use Validator;
@@ -31,7 +31,7 @@ class AuthController extends Controller
     protected $redirectTo = '/';
     protected $loginView = 'login'; //追加　login時のview指定
     //protected $redirectPath = '/';
-    protected $guard = 'users';
+    protected $guard = 'student';
 
     /**
      * Create a new authentication controller instance.
@@ -45,14 +45,14 @@ class AuthController extends Controller
 
     //追加部分
     public function showLoginForm(){
-        if(view()->exists('auth.authenticate')){
-            return view('auth.authenticate');
+        if(view()->exists('student.authenticate')){
+            return view('student.authenticate');
         }
-        return view('auth.login');
+        return view('student.login');
     }
     
     public function showRegistrationForm(){
-        return view('auth.register');
+        return view('student.register');
     }
 
     /**

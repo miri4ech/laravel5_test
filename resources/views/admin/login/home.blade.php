@@ -1,4 +1,4 @@
-@extends('admin.layouts.admin')
+@extends('admin.login.layouts.admin')
 @section('title', 'Homeページだよ')
 
 @section('content')

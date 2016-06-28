@@ -3,36 +3,32 @@
 return [
 
     'defaults' => [
-        'guard' => 'users',
-        'passwords' => 'users',
+        'guard' => 'student',
+        'passwords' => 'students',
     ],
 
     'guards' => [
-        'users' => [
+        'student' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'students',
         ],
         'admin' => [
             'driver' => 'session',
-            'provider' => 'admin',
+            'provider' => 'admins',
         ],
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
-        ],
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-        ],       
+        ],      
     ],
 
 
     'providers' => [
-        'users' => [
+        'students' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'admin' => [
+        'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
@@ -40,15 +36,15 @@ return [
 
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'email' => 'auth.emails.password',
+        'students' => [
+            'provider' => 'student',
+            'email' => 'student.login.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
         ],
-        'admin' => [
-            'provider' => 'admin',
-            'email' => 'admin.emails.password',
+        'admins' => [
+            'provider' => 'admins',
+            'email' => 'admin.login.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
         ],

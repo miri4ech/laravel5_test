@@ -2,11 +2,11 @@
 
 @push('stylesheets')
 	<!-- iCheck -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/flat/green.css" rel="stylesheet">
+	<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	<!-- bootstrap-progressbar -->
-	{{-- <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet"> --}}
+	<link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 	<!-- jVectorMap -->
-	<link href="css/maps/jquery-jvectormap-2.0.3.css" rel="stylesheet"/>
+	<link href="../css/maps/jquery-jvectormap-2.0.3.css" rel="stylesheet"/>
 @endpush
 
 @section('main_container')
@@ -579,8 +579,8 @@
 	<!-- iCheck -->
 	<script src="../vendors/iCheck/icheck.min.js"></script>
 	<!-- bootstrap-daterangepicker -->
-	<script src="js/moment/moment.min.js"></script>
-	<script src="js/datepicker/daterangepicker.js"></script>
+	<script src="../js/moment/moment.min.js"></script>
+	<script src="../js/datepicker/daterangepicker.js"></script>
 	<!-- bootstrap-wysiwyg -->
 	<script src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
 	<script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>

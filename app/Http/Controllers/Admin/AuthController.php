@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Models\Admin;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
 
 class AuthController extends Controller
 {
@@ -28,9 +30,10 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/home'; //追加
-    protected $loginView = 'admin.login'; //追加　login時のview指定
-    //protected $redirectPath = '/admin/';
+    protected $redirectTo = '/home'; //ログイン後のリダイレクト先
+    protected $redirectAfterLogout = '/login'; //ログアウト後のリダイレクト先
+    protected $loginView = 'admin.login.login'; //追加　login時 のview指定
+    protected $loginPath = '/login'; //認証前のリダイレクト
     protected $guard = 'admin';
 
     /**
@@ -43,7 +46,34 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
+    //追加部分
+    public function showLoginForm(){
+        if(view()->exists('admin.login.authenticate')){
+            return view('admin.login.authenticate');
+        }
+        return view('admin.login.login');
+    }
+    
+    public function showRegistrationForm(){
+        return view('admin.login.register');
+    }
 
+    public function postRegister(Request $request){
+        return $this->register($request);
+    }
+    public function register(Request $request){
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        Auth::guard($this->getGuard())->login($this->create($request->all()));
+
+        return redirect($this->redirectPath());
+    }
     /**
      * Get a validator for an incoming registration request.
      *
