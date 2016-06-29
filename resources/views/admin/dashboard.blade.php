@@ -1,12 +1,20 @@
 @extends('admin.layouts.blank')
 
 @push('stylesheets')
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<!-- iCheck -->
 	<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	<!-- bootstrap-progressbar -->
 	<link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 	<!-- jVectorMap -->
 	<link href="../css/maps/jquery-jvectormap-2.0.3.css" rel="stylesheet"/>
+
+	<!-- Custom styling plus plugins -->
+    <link href="../css/custom.min.css" rel="stylesheet">
 @endpush
 
 @section('main_container')
@@ -16,19 +24,15 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="index.html" class="site_title"><i class="fa fa-gears"></i> <span>GL管理画面</span></a>
+						<a href="index.html" class="site_title"><i class="fa fa-plane"></i> <span>GL管理画面</span></a>
 					</div>
 
 					<div class="clearfix"></div>
 
 					<!-- menu profile quick info -->
 					<div class="profile">
-						<div class="profile_pic">
-							<img src="images/img.jpg" alt="..." class="img-circle profile_img">
-						</div>
 						<div class="profile_info">
-							<span>Welcome,</span>
-							<h2>Miri Kunisada</h2>
+							<h2>Welcome, {{ Auth::guard("admin")->user()->name }}</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->

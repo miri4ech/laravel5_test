@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Validator;
-use App\Http\Controllers\Controller;
+// use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -43,37 +43,25 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware('guest:admin', ['except' => 'logout']);
     }
 
-    //追加部分
+    //vendor書き換え必要な部分
     public function showLoginForm(){
-        if(view()->exists('admin.login.authenticate')){
-            return view('admin.login.authenticate');
+        if (property_exists($this, 'loginView')){
+            return view($this->loginView);
         }
+
         return view('admin.login.login');
     }
-    
     public function showRegistrationForm(){
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView);
+        }
+
         return view('admin.login.register');
     }
 
-    public function postRegister(Request $request){
-        return $this->register($request);
-    }
-    public function register(Request $request){
-        $validator = $this->validator($request->all());
-
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
-
-        Auth::guard($this->getGuard())->login($this->create($request->all()));
-
-        return redirect($this->redirectPath());
-    }
     /**
      * Get a validator for an incoming registration request.
      *

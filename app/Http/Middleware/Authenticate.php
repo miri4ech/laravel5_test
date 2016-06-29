@@ -21,10 +21,16 @@ class Authenticate
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                if($guard == 'admin'){
-                    return redirect()->guest('/home');
+                switch ($guard) {
+                    case 'admin':
+                        return redirect()->guest('/home');
+                        break;
+                    
+                    default:
+                        return redirect()->guest('login');
+                        break;
                 }
-                return redirect()->guest('/login');            
+            }
         }
         
         return $next($request);

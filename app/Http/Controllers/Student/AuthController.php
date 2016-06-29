@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use App\Models\User;
 use Validator;
-use App\Http\Controllers\Controller;
+// use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

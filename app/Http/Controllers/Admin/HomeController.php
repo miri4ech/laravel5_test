@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:admins');
+        $this->middleware('auth:admin');
     }
 
     /**
@@ -25,7 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-    	// dd(Auth::guard("admin")->user()->name);
-        return view('admin.login.home');
+        return view('admin.dashboard');
     }
 }
