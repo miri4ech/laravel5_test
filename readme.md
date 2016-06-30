@@ -7,10 +7,10 @@
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework) -->
 
 ## 開発環境
--nginx
--php7
--centos7
--Laravel 5.2.39
+- nginx
+- php7
+- centos7
+- Laravel 5.2.39
 
 ## ルーティング
 .envファイルにドメイン名を定型化
