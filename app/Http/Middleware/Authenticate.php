@@ -18,21 +18,19 @@ class Authenticate
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->guest()) {
+            //ログインしている時
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                switch ($guard) {
-                    case 'admin':
-                        return redirect()->guest('/home');
-                        break;
-                    
-                    default:
-                        return redirect()->guest('login');
-                        break;
-                }
+
             }
+
+        }else{
+            //ログインしていない時
         }
-        
-        return $next($request);
+
+            //ログインしている時
+            return $next($request);
+    
     }
 }

@@ -1,4 +1,4 @@
-@extends('student.layouts.app')
+@extends('student.layouts.master')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page Miri.
+                    Global Leaderの学生ページのホーム画面へようこそ！
                 </div>
             </div>
         </div>

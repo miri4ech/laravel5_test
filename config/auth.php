@@ -3,8 +3,8 @@
 return [
 
     'defaults' => [
-        'guard' => 'student',
-        'passwords' => 'students',
+        'guard' => 'hogehoge',
+        'passwords' => 'users',
     ],
 
     'guards' => [
@@ -19,7 +19,15 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
-        ],      
+        ],
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+        ],
+        'hogehoge' => [
+            'driver' => 'session',
+            'provider' => 'fuga',
+        ],  
     ],
 
 
@@ -31,6 +39,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'fuga' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Event::class,
         ],
     ],
 

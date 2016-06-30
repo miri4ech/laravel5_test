@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Student;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;//追加
 
 class HomeController extends Controller
 {
-    protected $guard = 'admin';
+    protected $guard = 'student';
     /**
      * Create a new controller instance.
      *
@@ -25,9 +25,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        // dd(Auth::guard("admin")->user()->name);
-        return view('admin.dashboard');
+    public function index()
+    {
+        return view('student.home');
     }
-
 }

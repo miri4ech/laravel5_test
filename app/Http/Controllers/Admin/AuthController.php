@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Models\Admin;
 use Validator;
-// use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -31,9 +31,9 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/home'; //ログイン後のリダイレクト先
-    protected $redirectAfterLogout = '/login'; //ログアウト後のリダイレクト先
+    protected $redirectAfterLogout = '/'; //ログアウト後のリダイレクト先
     protected $loginView = 'admin.login.login'; //追加　login時 のview指定
-    protected $loginPath = '/login'; //認証前のリダイレクト
+    protected $registerView = 'admin.login.register'; //追加　register時 のview指定
     protected $guard = 'admin';
 
     /**
@@ -43,7 +43,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin', ['except' => 'logout']);
+
     }
 
     //vendor書き換え必要な部分
@@ -51,14 +51,12 @@ class AuthController extends Controller
         if (property_exists($this, 'loginView')){
             return view($this->loginView);
         }
-
         return view('admin.login.login');
     }
     public function showRegistrationForm(){
         if (property_exists($this, 'registerView')) {
             return view($this->registerView);
         }
-
         return view('admin.login.register');
     }
 

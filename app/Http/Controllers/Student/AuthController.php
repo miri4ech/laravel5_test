@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Student;
 
-use App\Models\User;
 use Validator;
-// use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -28,9 +28,10 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
-    protected $loginView = 'login'; //追加　login時のview指定
-    //protected $redirectPath = '/';
+    protected $redirectTo = '/home'; //ログイン後のリダイレクト先
+    protected $redirectAfterLogout = '/'; //ログアウト後のリダイレクト先
+    protected $loginView = 'student.login.login'; //追加　login時 のview指定
+    protected $registerView = 'student.login.register'; //追加　register時 のview指定
     protected $guard = 'student';
 
     /**
@@ -40,19 +41,21 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+
     }
 
-    //追加部分
+    //vendor書き換え必要な部分
     public function showLoginForm(){
-        if(view()->exists('student.authenticate')){
-            return view('student.authenticate');
+        if (property_exists($this, 'loginView')){
+            return view($this->loginView);
         }
-        return view('student.login');
+        return view('student.login.login');
     }
-    
     public function showRegistrationForm(){
-        return view('student.register');
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView);
+        }
+        return view('student.login.register');
     }
 
     /**

@@ -1,5 +1,4 @@
-@extends('student.layouts.app')
-@section('title', 'Homeページだよ')
+@extends('student.layouts.master')
 
 @section('content')
 <div class="container">
@@ -9,13 +8,8 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    めんそ〜れ〜ログインユーザーさん！
                 </div>
-@can('if_admin')
-hello admin
-@else
-hello user
-@endcan
             </div>
         </div>
     </div>

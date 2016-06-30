@@ -1,4 +1,4 @@
-@extends('admin.layouts.blank')
+@extends('admin.layouts.master')
 
 @push('stylesheets')
     <!-- iCheck -->
