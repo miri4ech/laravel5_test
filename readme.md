@@ -13,9 +13,9 @@
 - Laravel 5.2.39
 
 ## ルーティング
-.envファイルにドメイン名を定型化
-ADMIN_DOMAIN=ADMIN画面のサブドメイン
-STUDENT_DOMAIN=STUDENT画面のサブドメイン
+### .envファイルにドメイン名を定型化
+- ADMIN_DOMAIN=ADMIN画面のサブドメイン
+- STUDENT_DOMAIN=STUDENT画面のサブドメイン
 
 ## 注意点
 ### ADMIN
